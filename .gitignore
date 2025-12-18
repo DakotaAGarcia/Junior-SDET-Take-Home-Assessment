@@ -1,0 +1,12 @@
+# Playwright
+node_modules/
+test-results/
+playwright-report/
+blob-report/
+
+# Playwright caches / auth
+.playwright/.cache/
+.auth/
+
+# macOS
+.DS_Store
