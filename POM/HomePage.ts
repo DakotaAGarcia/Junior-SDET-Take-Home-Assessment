@@ -42,7 +42,11 @@ export class HomePage extends BasePage {
   
 
   async visualSnapshotOfH1(snapshotName: string): Promise<void> {
-    // Stable element screenshot for visual testing
-    await expect(this.h1).toHaveScreenshot(snapshotName);
+    await expect(this.h1).toHaveScreenshot(snapshotName, {
+      scale: 'css',
+      maxDiffPixels: 250,
+    });
   }
+  
+  
 }

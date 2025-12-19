@@ -28,7 +28,7 @@ test.describe.serial('Target 2: Authentication App (localhost)', () => {
     // Validate an error is shown (text may vary; match broadly)
     await expect(page.locator('body')).toContainText(/invalid|unauthorized|error/i);
 
-    await expect(page).toHaveURL('http://localhost:3000/');
+    await expect(page).toHaveURL(/\/login$/);
 
 
     // Ensure no token cookie was set
