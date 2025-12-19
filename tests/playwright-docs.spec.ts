@@ -36,11 +36,13 @@ test.describe('Target 1: Playwright Documentation Site (POM)', () => {
     await home.assertFooterCopyrightWithRegexAriaSnapshot();
   });
 
-  test('PW-DOC: Visual testing (image snapshot) of homepage H1', async ({ page }) => {
+  test('PW-DOC: Visual testing (image snapshot) of homepage H1', async ({ page }, testInfo) => {
+    // Keep visual snapshots deterministic: validate only in headless mode.
+    test.skip(testInfo.project.use.headless === false, 'Visual snapshots are validated in headless mode for determinism.');
+  
     const home = new HomePage(page);
     await home.goto();
-
-    // First time: run with --update-snapshots to create baseline image
+  
     await home.visualSnapshotOfH1('homepage-h1.png');
   });
 

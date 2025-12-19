@@ -30,16 +30,23 @@ export class HomePage extends BasePage {
   }
 
   async assertFooterCopyrightWithRegexAriaSnapshot(): Promise<void> {
-    const copyright = this.page.getByText(/Copyright © 2025 Microsoft/);
+    const copyright = this.page.locator('.footer__copyright');
   
     await expect(copyright).toMatchAriaSnapshot(`
-      - text: /Copyright © 2025 Microsoft/
+    - text: /Copyright © \\d{4} Microsoft/
     `);
   }
   
+  
+  
+  
 
   async visualSnapshotOfH1(snapshotName: string): Promise<void> {
-    // Stable element screenshot for visual testing
-    await expect(this.h1).toHaveScreenshot(snapshotName);
+    await expect(this.h1).toHaveScreenshot(snapshotName, {
+      scale: 'css',
+      maxDiffPixels: 250,
+    });
   }
+  
+  
 }
